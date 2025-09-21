@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HTML & JavaScript Fundamentals DEMO</title>
+    <style>
+        .header{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 1vw;
+            background-color: blue;
+            color: white;
+        }
+
+        .item1, .item2{
+            flex: 0 0 auto;
+            text-align: center;
+        }
+
+        body {
+            background-color: whitesmoke;
+            font-family: Arial, sans-serif;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        form {
+            width: 40%;
+            background-color: white;
+            padding:20px;
+            border-radius: 8px; 
+        }
+
+        .gender-group {
+            margin-bottom: 10px;
+        }
+
+        @media(max-width:400px){
+            body{
+                background-color:red;
+            }
+            .header{
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="item1"><h1>HTML</h1></div>
+        <div class="item2"><h1>CSS</h1></div>
+    </div>
+
+    <p>This is a paragraph element. <b>HTML</b> uses tags to mark up content.</p>
+    <img src="https://imgs.search.brave.com/_fbfAd8zlJbfu637As-5r4q_13Ht_H-MSgr1ZfdDSF8/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9jZG4u/cGl4YWJheS5jb20v/cGhvdG8vMjAxNy8w/OC8wNS8xMS8xNi9s/b2dvLTI1ODI3NDhf/NjQwLnBuZw" alt="HTML logo">
+    <p>To learn more about HTML <a href="https://www.w3schools.com/html/html_attributes.asp" target="_blank"><i>W3schools</i></a></p>
+    <p>Go to the second page <a href="next.html" target="_blank"><i>Second page</i></a></p>
+
+    <p>The concepts that will be covered here are:</p>
+    <ol>
+        <li>HTML Lists</li>
+        <li>HTML Forms</li>
+        <li>HTML Tables</li>
+    </ol>
+
+    <table>
+        <caption>Personal information</caption>
+        <tr>
+            <td>First Name</td>
+            <td>Last Name</td>
+            <td>Age</td>
+        </tr>
+        <tr>
+            <td>Kueenga</td>
+            <td>Yangchen</td>
+            <td>20</td>
+        </tr>
+        <tr>
+            <td>Samphell</td>
+            <td>Norbu</td>
+            <td>22</td>
+        </tr>
+        <tr>
+            <td>Tashi</td>
+            <td>Choden</td>
+            <td>16</td>
+        </tr>
+    </table>
+
+    <form>
+        <fieldset>
+            <legend>User Personal Information</legend>
+            <label for="name">Enter your full name:</label>
+            <input type="text" id="name" name="name" required />
+            <label for="email">Enter your email:</label>
+            <input type="email" id="email" name="email" required />
+            <label for="password">Enter your password:</label>
+            <input type="password" id="password" name="password" required />
+            <label>Enter your gender:</label>
+            <div class="gender-group">
+                <input type="radio" name="gender" value="male" id="male" required />
+                <label for="male">Male</label>
+                <input type="radio" name="gender" value="female" id="female" />
+                <label for="female">Female</label>
+                <input type="radio" name="gender" value="others" id="others" />
+                <label for="others">Others</label>
+            </div>
+            <input type="submit" value="Submit" />
+        </fieldset>
+    </form>
+
+    <hr>
+    <h2>JavaScript Demos</h2>
+    <div id="js-demo">
+        <h3>1. Printing Methods</h3>
+        <div id="output"></div>
+
+        <h3>2. Variables & Data Types</h3>
+        <div id="var-output"></div>
+
+        <h3>3. Control Flow</h3>
+        <div id="control-output"></div>
+
+        <h3>4. Loops</h3>
+        <div id="loop-output"></div>
+
+        <h3>5. Functions & Callbacks</h3>
+        <div id="func-output"></div>
+    </div>
+
+    <script>
+        // --- 1. Printing Methods ---
+        document.write("<p>document.write: Welcome to JS Learning!</p>");
+        alert("alert: Try interacting with this page!");
+        console.log("console.log: JS script is running successfully.");
+        document.getElementById("output").innerHTML = "innerHTML: JavaScript Rocks!";
+
+        // --- 2. Variables & Data Types ---
+        let greeting = "Hello, Coding World!";
+        const year = 2025;
+        var isLearning = true;
+        let studentInfo = { firstName: "Kueen", lastName: "Yangchen", grade: "A" };
+        let hugeNumber = 98765432109876543210n;
+
+        const varDiv = document.getElementById("var-output");
+        varDiv.innerHTML += `<p>Text: ${greeting}</p>`;
+        varDiv.innerHTML += `<p>Number: ${year}</p>`;
+        varDiv.innerHTML += `<p>Boolean: ${isLearning}</p>`;
+        varDiv.innerHTML += `<p>Student: ${studentInfo.firstName} ${studentInfo.lastName}, Grade: ${studentInfo.grade}</p>`;
+        varDiv.innerHTML += `<p>Big Integer: ${hugeNumber}</p>`;
+
+        // --- 3. Control Flow ---
+        const temperature = 28;
+        let controlDiv = document.getElementById("control-output");
+        if (temperature > 30) {
+            controlDiv.innerHTML += "<p>Weather Status: Hot</p>";
+        } else if (temperature >= 20) {
+            controlDiv.innerHTML += "<p>Weather Status: Pleasant</p>";
+        } else {
+            controlDiv.innerHTML += "<p>Weather Status: Cold</p>";
+        }
+
+        const today = "Monday";
+        switch(today) {
+            case "Monday":
+                controlDiv.innerHTML += "<p>Weekday: Start of the week!</p>"; break;
+            case "Friday":
+                controlDiv.innerHTML += "<p>Weekday: Weekend is near!</p>"; break;
+            default:
+                controlDiv.innerHTML += "<p>Weekday: Just another day.</p>";
+        }
+
+        let numCheck = 10;
+        controlDiv.innerHTML += `<p>${numCheck === 5 ? "Number is 5" : "Number is not 5"}</p>`;
+
+        // --- 4. Loops ---
+        const loopDiv = document.getElementById("loop-output");
+        for (let i = 1; i <= 3; i++) {
+            loopDiv.innerHTML += `<p>For loop count: ${i}</p>`;
+        }
+        let j = 1;
+        while(j <= 3) {
+            loopDiv.innerHTML += `<p>While loop count: ${j}</p>`;
+            j++;
+        }
+        let k = 1;
+        do {
+            loopDiv.innerHTML += `<p>Do-While loop count: ${k}</p>`;
+            k++;
+        } while(k <= 3);
+
+        let cityPop = { Thimphu: 120000, Paro: 35000, Punakha: 20000 };
+        for(let city in cityPop) {
+            loopDiv.innerHTML += `<p>City: ${city}, Population: ${cityPop[city]}</p>`;
+        }
+
+        let fruits = ["Mango","Orange","Papaya"];
+        for(let fruit of fruits) {
+            loopDiv.innerHTML += `<p>Fruit: ${fruit}</p>`;
+        }
+
+        // --- 5. Functions & Callbacks ---
+        function welcome(name) {
+            return `Greetings, ${name}!`;
+        }
+        function runCallback(callback, user) {
+            let funcDiv = document.getElementById("func-output");
+            funcDiv.innerHTML += `<p>${callback(user)}</p>`;
+        }
+        runCallback(welcome, "Yangchenn");
+
+        function outerFunc(x){
+            function innerFunc(y){
+                return x * y;
+            }
+            return innerFunc;
+        }
+        const multiplyByTen = outerFunc(10);
+        document.getElementById("func-output").innerHTML += `<p>Nested Function Result: ${multiplyByTen(3)}</p>`;
+    </script>
+</body>
+</html>
